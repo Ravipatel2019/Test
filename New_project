@@ -1,0 +1,6 @@
+Git status 
+git add .
+git commit -m "lable name" <Filename>
+git log 
+git show <cid>
+
