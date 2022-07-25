@@ -1,0 +1,152 @@
+GIT-01-class:
+===============
+Installation of git in windows:
+================================
+
+in git we have three phases those are 
+    1.workspace
+    2.staging/index
+    3.Local repo
+with help of touch,cat and vi created the files and added files to the local repo through the below commands
+
+git init - to initialize the local repo 
+git config --global user.name "Ravipatel"
+git confid --global user.email "devopsworld2209@gmail.com"
+git config --list
+
+Git status 
+git add <File Name>   (., *, -A)	
+git commit -m "lable name" 
+git log
+git show <commit id> - to show the files or content the commit 
+
+git reset HEAD <filename> (. , * , -A ) - to revert the data from staging/Index to workspace
+git reset --soft <commit id>  - To revert the data from Local repo to staging/Index 
+git reset --mixed <commit id> (n-1) - To revert the from both staging/Index,Local repo to Workspace
+
+git clone <central git URL>
+git push -if want to push the data after modifying the data in cloned repo 
+git pull --rebase - to pull the as per the latest presnt in the central repo 
+
+GIT LOGS Check:
+================
+
+git log -n 
+git log --oneline 
+git log --oneline -n
+git log --author=name
+git log --author=name -n
+git log --author=name --oneline -n
+git log --until=yy-mm-dd (or) git log --before=yy-mm-dd
+git log --since=yy-mm-dd (or) git log --after=yy-mm-dd
+git log --since=yy-mm-dd --until=yy-mm-dd
+git log --until=yy-mm-dd hh-mm
+git log --<filename>
+git log --grep='lablename'
+
+BRANCH :
+=========
+
+git branch <branch name> - To create new branch 
+git checkout -b <branch name> - create the branch and switch to branch same time
+git branch  - To show the list of branches
+git checkout <branch name>  - To swith the other branch 
+git merge <source branch> - to perform in current brnch 
+git cherry-pick <comit id> - specific commit merge to current branch
+
+git push origin -d <branch name>  To push the new branch to Central repo 
+            (or) 
+git push <entral repo path> origin -d <branch name> 
+git branch -r - to show the list of branches in Central repo
+git branch -a
+git checkout -b <branch name>
+
+Revert (or) Rollback:
+=====================
+
+if any builds are failed in jenkins jobs then we need to revert previos as per the analysis which buils failed with logs in git to check who made respective commits.
+
+git revert <commit id>  - choose the last succussful commit
+git revert <rerevrt commit id>  - if we still face the build failed then we need to rerevert the commit 
+
+SET ALIASES:
+=========
+
+git status 
+git config -global alias.s 'status'
+git s   - Alias Name
+
+git config --list 
+git config --global alias.cl 'config --list'
+git cl  - Alias Name 
+
+git log --oneline 
+git config --global alias.l1 'log --oneline'
+git l1  - Alias Name 
+
+etc we can set the alias as per the above 
+
+UNSET ALIASES:
+==============
+
+git config --global --unset alias.s
+git config --global --unset alias.cl
+git config --global --unset alias.l1
+
+etc we can remove the aliases and as well as user.name and user.email 
+
+CONFLICTS ERRORS:
+=================
+
+    1. Abort
+    2. Manual 
+    3. Automerging 
+
+git merge <source branch name>
+git merge --abort  - mege conflict error not fixed just come out of merg conflict 
+git merge <source branch>   - if we get merge conflict means check with the commited logs for the respective branchs and communicate with devlopers and amnually edit the conflict and fix the merge confilct at destination branch and commit to local repo and then merged it into the source branch if needed and thn push to central repo if they modified at same file 
+git rebase <soure branch>  - we have some other files on both branches if we merge them into any branch cresate extra commit if we use merge for that reason we use rebase here 
+
+TAGS:
+=====
+* every release we can give Tag id to mark the release point 
+git tag <tagname>  - to create the tag name as per the latest commit by defeault 
+git tag <tagname> <commi id> - to create respective tags to respective commit id 
+git checkout <tagname>  - to view the list of commits in the respective tag
+git tag  - to sho the list of tags 
+git show <tagname>  (or) git log  - to show the logs of tags
+git push origin <tagname>  - to push the tags to central repo
+         (or) 
+git push <central repo path> <tagname>
+
+git tag -d <tagname>   - To delete the tags in local repo 
+git push origin <tagname>  - to delete the tags in central repo 
+         (or) 
+git push -d <central repo path> <tagname> 	 
+
+AMEND Command:
+===============
+
+git commit --amend -m lablename> <filename> - if we add wrong lablename means by using this comand we modify the new name
+
+IGNOREFILES:
+=============
+
+Temp files if we modify also that won't trigger in workspace those files need to move newly created .ignorefiles and commit to the local repo 
+
+vi .ignorefiles
+
+GIt STASH Pending: 
+===================
+
+
+
+
+
+
+
+
+
+
+
+
